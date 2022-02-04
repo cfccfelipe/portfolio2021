@@ -113,10 +113,10 @@ p {
     font-size: 1.75rem;
   }
   h4 {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   body {
-    font-size: 1.5rem;
+    font-size: 0.9rem;
   }
   h1,
   h2,
@@ -412,7 +412,7 @@ Hero
 .hero {
   margin-top: -5rem;
   padding-top: 5rem;
-  height: 70vh;
+  height: 90vh;
   background: var(--clr-primary-10);
   position: relative;
 }
@@ -432,6 +432,8 @@ Hero
 }
 .hero-img {
   display: none;
+  height: 57vh;
+  width: 60vh;
 }
 .hero-info h4 {
   color: var(--clr-grey-5);

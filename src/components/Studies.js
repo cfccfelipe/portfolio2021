@@ -7,13 +7,14 @@ const Studies = () => {
       <Title title="Studies" />
       <div className="section-center services-center">
         {studies.map(study => {
-          const { id, icon, title, text } = study
+          const { id, icon, title, text, un } = study
           return (
             <article key={id} className="service">
               {icon}
-              <h3>{title}</h3>
+              <h4>{title}</h4>
               <div className="underline"></div>
               <p>{text}</p>
+              <p>{un}</p>
             </article>
           )
         })}

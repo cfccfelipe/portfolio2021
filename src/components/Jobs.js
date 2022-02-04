@@ -4,8 +4,58 @@ import { FaAngleDoubleRight } from "react-icons/fa"
 import { graphql, useStaticQuery } from "gatsby"
 import { Link } from "gatsby"
 
+const query = graphql`
+  {
+    allStrapiJobs(sort: { fields: id, order: DESC }) {
+      nodes {
+        data {
+          attributes {
+            company
+            position
+            date
+            desc
+          }
+        }
+      }
+    }
+  }
+`
 const Jobs = () => {
-  return <h2>jobs component</h2>
+  const d = useStaticQuery(query)
+  const {
+    allStrapiJobs: {
+      nodes: [{ data: jobs }],
+    },
+  } = d
+  const [value, setValue] = React.useState(0)
+  const { attributes } = jobs[value]
+  const { company, position, date, desc } = attributes
+  return (
+    <section className="section jobs">
+      <Title title="experience" />
+      <div className="jobs-center">
+        <div className="btn-container">
+          {jobs.map((item, index) => {
+            return (
+              <button
+                key={index}
+                onClick={() => setValue(index)}
+                className={`job-btn ${index === value && "active-btn"}`}
+              >
+                {item.attributes.company}
+              </button>
+            )
+          })}
+        </div>
+        <article className="job-info">
+          <h3>{position}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{date}</p>
+          <p>{desc}</p>
+        </article>
+      </div>
+    </section>
+  )
 }
 
 export default Jobs
