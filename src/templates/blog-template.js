@@ -9,9 +9,10 @@ const ComponentName = () => {
 
 // export const query = graphql`
 //   query GetSingleBlog($slug: String) {
-//     blog: strapiBlogs(slug: { eq: $slug }) {
+//     blog: strapiBlogs(
+//       data: { elemMatch: { attributes: { slug: { eq: $slug } } } }
+//     ) {
 //       content
-
 //     }
 //   }
 // `

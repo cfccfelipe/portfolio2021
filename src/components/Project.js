@@ -1,33 +1,48 @@
 import React from "react"
 import PropTypes from "prop-types"
-import Image from "gatsby-image"
-import projects1 from "../assets/projects-4.jpg"
-import { FaGithubSquare, FaShareSquare } from "react-icons/fa"
+import { FaGithubSquare, FaShareSquare, FaYoutubeSquare } from "react-icons/fa"
+
 const Project = ({ project }) => {
   const {
     desc,
     title,
     github,
-    feature,
     stack,
     url,
     imgid,
     youtube,
+    isdata,
   } = project.attributes
+  const stack_list = stack.split("-")
+
   return (
-    <article className="porject">
-      {/* <Image fluid={projects1} className="project-img" /> */}
+    <article className="project">
+      <img className="project-img" src={imgid} alt="project" />
+
       <div className="project-info">
-        <h3>{title}</h3>
-        <p className="project-desc">{desc}</p>
-        <div className="project-stack">{stack}</div>
+        <h4>{title}</h4>
+        <p>{desc}</p>
+        <div className="project-stack">
+          {stack_list.map((item, id) => {
+            return <span key={id}>{item}</span>
+          })}
+        </div>
         <div className="porject-links">
-          <a href={github}>
-            <FaGithubSquare className="project-icon" />
-          </a>
-          <a href={url}>
-            <FaShareSquare className="project-icon" />
-          </a>
+          {github && (
+            <a href={github}>
+              <FaGithubSquare className="project-icon" />
+            </a>
+          )}
+          {youtube && (
+            <a href={youtube}>
+              <FaYoutubeSquare className="project-icon" />
+            </a>
+          )}
+          {url && (
+            <a href={url}>
+              <FaShareSquare className="project-icon" />
+            </a>
+          )}
         </div>
       </div>
     </article>

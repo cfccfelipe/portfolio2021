@@ -11,35 +11,53 @@ export default ({ data }) => {
     allStrapiProjects: {
       nodes: [{ data: projects }],
     },
+    allStrapiBlogs: {
+      nodes: [{ data: blogs }],
+    },
   } = data
-
   return (
     <Layout>
-      Hero(): JSX.Element
       <Hero />
       <Studies />
       <Jobs />
       <Projects projects={projects} title="Data Projects" showLink />
+      <Blogs blogs={blogs} title="Lastest Article" showLink />
     </Layout>
   )
 }
 export const query = graphql`
   {
     allStrapiProjects(
-      filter: { data: { elemMatch: { attributes: { feature: { eq: true } } } } }
+      filter: { data: { elemMatch: { attributes: { isdata: { eq: true } } } } }
     ) {
       nodes {
         data {
           attributes {
             title
             github
-            feature
+            isdata
             desc
             stack
             url
             imgid
             youtube
           }
+        }
+      }
+    }
+    allStrapiBlogs(sort: { order: DESC, fields: data___attributes___date }) {
+      nodes {
+        data {
+          attributes {
+            category
+            content
+            desc
+            linkmedia
+            slug
+            title
+            date(formatString: "MMM Do, YYYY")
+          }
+          id
         }
       }
     }

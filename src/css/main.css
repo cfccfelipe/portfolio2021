@@ -648,7 +648,6 @@ Projects
   z-index: 1;
 }
 .project-img::after {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;

@@ -1,13 +1,17 @@
-// const path = require("path")
+const path = require("path")
 
-// // create pages dynamically
+// create pages dynamically
 // exports.createPages = async ({ graphql, actions }) => {
 //   const { createPage } = actions
 //   const result = await graphql(`
 //     {
 //       blogs: allStrapiBlogs {
 //         nodes {
-//           slug
+//           data {
+//             attributes {
+//               slug
+//             }
+//           }
 //         }
 //       }
 //     }
@@ -15,10 +19,10 @@
 
 //   result.data.blogs.nodes.forEach(blog => {
 //     createPage({
-//       path: `/blogs/${blog.slug}`,
+//       path: `/blogs/${blog.data.attributes.slug}`,
 //       component: path.resolve(`src/templates/blog-template.js`),
 //       context: {
-//         slug: blog.slug,
+//         slug: blog.data.attributes.slug,
 //       },
 //     })
 //   })

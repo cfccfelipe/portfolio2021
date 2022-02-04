@@ -27,9 +27,11 @@ const Jobs = () => {
       nodes: [{ data: jobs }],
     },
   } = d
+
   const [value, setValue] = React.useState(0)
   const { attributes } = jobs[value]
   const { company, position, date, desc } = attributes
+  const list_desc = desc.split("-")
   return (
     <section className="section jobs">
       <Title title="experience" />
@@ -51,7 +53,16 @@ const Jobs = () => {
           <h3>{position}</h3>
           <h4>{company}</h4>
           <p className="job-date">{date}</p>
-          <p>{desc}</p>
+          <div className="job-desc">
+            {list_desc.map(a => {
+              return (
+                <p>
+                  <FaAngleDoubleRight className="job-icon" />
+                  {a}
+                </p>
+              )
+            })}
+          </div>
         </article>
       </div>
     </section>
