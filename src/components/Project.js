@@ -23,11 +23,12 @@ const Project = ({ project }) => {
 
   return (
     <article className="project">
-      <Image
-        fluid={img_article.childImageSharp.fluid}
-        className="project-img"
-      />
-
+      {img_article && (
+        <Image
+          fluid={img_article.childImageSharp.fluid}
+          className="project-img"
+        />
+      )}
       <div className="project-info">
         <h4>{title}</h4>
         <p>{short_desc}</p>
