@@ -8,12 +8,8 @@ import Projects from "../components/Projects"
 import Blogs from "../components/Blogs"
 export default ({ data }) => {
   const {
-    allStrapiProjects: {
-      nodes: [{ data: projects }],
-    },
-    allStrapiBlogs: {
-      nodes: [{ data: blogs }],
-    },
+    allStrapiProjects: { nodes: projects },
+    allStrapiBlogs: { nodes: blogs },
   } = data
   return (
     <Layout>
@@ -28,36 +24,51 @@ export default ({ data }) => {
 export const query = graphql`
   {
     allStrapiProjects(
-      filter: { data: { elemMatch: { attributes: { isdata: { eq: true } } } } }
+      filter: { isdata: { eq: true } }
+      limit: 2
+      sort: { order: DESC, fields: id }
     ) {
       nodes {
-        data {
-          attributes {
-            title
-            github
-            isdata
-            desc
-            stack
-            url
-            imgid
-            youtube
+        title
+        github
+        isdata
+        url
+        youtube
+        short_desc
+        img_article {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
+        }
+        stack {
+          stack
+          id
+        }
+        features {
+          feature
+          id
         }
       }
     }
-    allStrapiBlogs(sort: { order: DESC, fields: data___attributes___date }) {
+    allStrapiBlogs(sort: { order: DESC, fields: date }, limit: 3) {
       nodes {
-        data {
-          attributes {
-            category
-            content
-            desc
-            linkmedia
-            slug
-            title
-            date(formatString: "MMM Do, YYYY")
+        title
+        content
+        id
+        short_desc
+        date(formatString: "MMMM DD, YYYY")
+        slug
+        categories {
+          category
+        }
+        imgp {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
-          id
         }
       }
     }

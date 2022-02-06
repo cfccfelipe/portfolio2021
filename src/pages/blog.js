@@ -3,15 +3,11 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import Blogs from "../components/Blogs"
 import Navbar from "../components/Navbar"
-// ...GatsbyImageSharpFluid
 
-const Blog = ({
-  data: {
-    allStrapiBlogs: {
-      nodes: [{ data: blogs }],
-    },
-  },
-}) => {
+const Blog = ({ data }) => {
+  const {
+    allStrapiBlogs: { nodes: blogs },
+  } = data
   return (
     <Layout>
       <Navbar />
@@ -23,19 +19,23 @@ const Blog = ({
 }
 export const query = graphql`
   {
-    allStrapiBlogs(sort: { order: DESC, fields: data___attributes___date }) {
+    allStrapiBlogs(sort: { order: DESC, fields: date }) {
       nodes {
-        data {
-          attributes {
-            category
-            content
-            desc
-            linkmedia
-            slug
-            title
-            date(formatString: "MMM Do, YYYY")
+        title
+        content
+        id
+        short_desc
+        date(formatString: "MMMM DD, YYYY")
+        slug
+        categories {
+          category
+        }
+        imgp {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
-          id
         }
       }
     }

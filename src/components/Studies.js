@@ -1,6 +1,7 @@
 import React from "react"
 import Title from "./Title"
 import studies from "../constants/studies"
+import { FaUniversity } from "react-icons/fa"
 const Studies = () => {
   return (
     <section className="section bg-grey">
@@ -14,7 +15,9 @@ const Studies = () => {
               <h4>{title}</h4>
               <div className="underline"></div>
               <p>{text}</p>
-              <p>{un}</p>
+              <p>
+                <FaUniversity /> {un}
+              </p>
             </article>
           )
         })}

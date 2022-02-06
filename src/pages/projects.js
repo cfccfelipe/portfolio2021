@@ -3,39 +3,46 @@ import Layout from "../components/Layout"
 import { graphql } from "gatsby"
 import Projects from "../components/Projects"
 import Navbar from "../components/Navbar"
-// ...GatsbyImageSharpFluid
 
 const ProjectsPage = ({ data }) => {
   const {
-    allStrapiProjects: {
-      nodes: [{ data: projects }],
-    },
+    allStrapiProjects: { nodes: projects },
   } = data
   return (
     <Layout>
       <Navbar />
-      <Projects projects={projects} title="All Projects" />
+      <Projects projects={projects} title=" Projects" />
     </Layout>
   )
 }
 export const query = graphql`
   {
-    allStrapiProjects {
+    allStrapiProjects(sort: { order: DESC, fields: id }) {
       nodes {
-        data {
-          attributes {
-            title
-            github
-            isdata
-            desc
-            stack
-            url
-            imgid
-            youtube
+        title
+        github
+        isdata
+        url
+        youtube
+        short_desc
+        img_article {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
           }
+        }
+        stack {
+          stack
+          id
+        }
+        features {
+          feature
+          id
         }
       }
     }
   }
 `
+
 export default ProjectsPage

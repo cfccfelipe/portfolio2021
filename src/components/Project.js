@@ -1,6 +1,12 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { FaGithubSquare, FaShareSquare, FaYoutubeSquare } from "react-icons/fa"
+import {
+  FaGithubSquare,
+  FaShareSquare,
+  FaYoutubeSquare,
+  FaStar,
+} from "react-icons/fa"
+import Image from "gatsby-image"
 
 const Project = ({ project }) => {
   const {
@@ -9,22 +15,35 @@ const Project = ({ project }) => {
     github,
     stack,
     url,
-    imgid,
+    img_article,
     youtube,
-    isdata,
-  } = project.attributes
-  const stack_list = stack.split("-")
+    short_desc,
+    features,
+  } = project
 
   return (
     <article className="project">
-      <img className="project-img" src={imgid} alt="project" />
+      <Image
+        fluid={img_article.childImageSharp.fluid}
+        className="project-img"
+      />
 
       <div className="project-info">
         <h4>{title}</h4>
-        <p>{desc}</p>
+        <p>{short_desc}</p>
         <div className="project-stack">
-          {stack_list.map((item, id) => {
-            return <span key={id}>{item}</span>
+          {stack.map((item, id) => {
+            return <span key={id}>{item.stack}</span>
+          })}
+        </div>
+        <div className="project-desc">
+          {features.map((item, id) => {
+            return (
+              <p>
+                <FaStar className="project-icon" />
+                <span key={id}>{item.feature}</span>
+              </p>
+            )
           })}
         </div>
         <div className="porject-links">

@@ -6,15 +6,14 @@ import { Link } from "gatsby"
 
 const query = graphql`
   {
-    allStrapiJobs(sort: { fields: id, order: DESC }) {
+    allStrapiJobs(sort: { order: DESC, fields: id }) {
       nodes {
-        data {
-          attributes {
-            company
-            position
-            date
-            desc
-          }
+        company
+        position
+        date
+        desc {
+          id
+          desc_option
         }
       }
     }
@@ -23,15 +22,11 @@ const query = graphql`
 const Jobs = () => {
   const d = useStaticQuery(query)
   const {
-    allStrapiJobs: {
-      nodes: [{ data: jobs }],
-    },
+    allStrapiJobs: { nodes: jobs },
   } = d
 
   const [value, setValue] = React.useState(0)
-  const { attributes } = jobs[value]
-  const { company, position, date, desc } = attributes
-  const list_desc = desc.split("-")
+  const { company, position, date, desc } = jobs[value]
   return (
     <section className="section jobs">
       <Title title="experience" />
@@ -40,11 +35,11 @@ const Jobs = () => {
           {jobs.map((item, index) => {
             return (
               <button
-                key={index}
+                key={item.id}
                 onClick={() => setValue(index)}
                 className={`job-btn ${index === value && "active-btn"}`}
               >
-                {item.attributes.company}
+                {item.position}
               </button>
             )
           })}
@@ -53,16 +48,14 @@ const Jobs = () => {
           <h3>{position}</h3>
           <h4>{company}</h4>
           <p className="job-date">{date}</p>
-          <div className="job-desc">
-            {list_desc.map(a => {
-              return (
-                <p>
-                  <FaAngleDoubleRight className="job-icon" />
-                  {a}
-                </p>
-              )
-            })}
-          </div>
+          {desc.map(a => {
+            return (
+              <p key={a.id} className="job-desc">
+                <FaAngleDoubleRight className="job-icon" />
+                {a.desc_option}
+              </p>
+            )
+          })}
         </article>
       </div>
     </section>

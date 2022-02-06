@@ -2,27 +2,22 @@ import React from "react"
 import PropTypes from "prop-types"
 import Image from "gatsby-image"
 import { Link } from "gatsby"
-const Blog = ({ blog }) => {
-  const {
-    id,
-    title,
-    category,
-    content,
-    desc,
-    linkmedia,
-    slug,
-    date,
-  } = blog.attributes
 
+const Blog = ({ id, title, categories, short_desc, imgp, slug, date }) => {
+  console.log(imgp)
   return (
-    <Link to={"/blogs/${slug}"}>
+    <Link to={`/blogs/${slug}`} className="blog" key={id}>
       <article>
-        <img alt="blog" src={linkmedia} className="blog-img" />
+        <Image fluid={imgp.childImageSharp.fluid} className="blog-img" />
         <div className="blog-card">
           <h4>{title}</h4>
-          <p>{desc}</p>
+          <p>{short_desc}</p>
           <div className="blog-footer">
-            <p>{category}</p>
+            <div>
+              {categories.map(category => {
+                return <p key={category.id}>{category.category}</p>
+              })}
+            </div>
             <p>{date}</p>
           </div>
         </div>

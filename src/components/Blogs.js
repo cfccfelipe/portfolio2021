@@ -7,12 +7,12 @@ export const Blogs = ({ blogs, title, showLink }) => {
     <section className="section">
       <Title title={title} />
       <div className="section-center blogs-center">
-        {blogs.map(blog => {
-          return <Blog key={blog.id} blog={blog} />
+        {blogs.map((blog, index) => {
+          return <Blog key={index} {...blog} />
         })}
       </div>
       {showLink && (
-        <Link to="/blogs" className="btn btn-center">
+        <Link to="/blogs" className="btn center-btn">
           blog
         </Link>
       )}
