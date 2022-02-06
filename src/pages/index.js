@@ -50,6 +50,7 @@ export const query = graphql`
           feature
           id
         }
+        id
       }
     }
     allStrapiBlogs(sort: { order: DESC, fields: date }, limit: 3) {

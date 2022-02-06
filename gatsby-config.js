@@ -3,7 +3,7 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
-
+require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: "Portfolio of Data Science",
@@ -30,7 +30,6 @@ module.exports = {
         apiURL: `https://portfolio-cfccfelipe-pai.herokuapp.com`,
         queryLimit: `1000`, // Default to 100
         contentTypes: [`jobs`, `projects`, `blogs`],
-        singleTypes: [],
       },
     },
     {
@@ -45,6 +44,16 @@ module.exports = {
             { family: "Open Sans" },
           ],
         },
+      },
+    },
+    {
+      resolve: `gatsby-source-cloudinary`,
+      options: {
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+        resourceType: `image`,
+        uploadFolder: "gatsby-cloudinary",
       },
     },
   ],

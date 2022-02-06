@@ -10,7 +10,6 @@ import Image from "gatsby-image"
 
 const Project = ({ project }) => {
   const {
-    desc,
     title,
     github,
     stack,
@@ -33,16 +32,16 @@ const Project = ({ project }) => {
         <h4>{title}</h4>
         <p>{short_desc}</p>
         <div className="project-stack">
-          {stack.map((item, id) => {
-            return <span key={id}>{item.stack}</span>
+          {stack.map(item => {
+            return <span key={item.id}>{item.stack}</span>
           })}
         </div>
         <div className="project-desc">
-          {features.map((item, id) => {
+          {features.map(item => {
             return (
               <p>
                 <FaStar className="project-icon" />
-                <span key={id}>{item.feature}</span>
+                <span key={item.id}>{item.feature}</span>
               </p>
             )
           })}
@@ -69,6 +68,15 @@ const Project = ({ project }) => {
   )
 }
 
-Project.propTypes = {}
+Project.propTypes = {
+  title: PropTypes.string,
+  github: PropTypes.string,
+  stack: PropTypes.arrayOf(PropTypes.object),
+  url: PropTypes.string,
+  img_article: PropTypes.object,
+  youtube: PropTypes.string,
+  short_desc: PropTypes.string,
+  features: PropTypes.arrayOf(PropTypes.object),
+}
 
 export default Project
