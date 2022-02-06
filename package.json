@@ -5,7 +5,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "scripts": {
     "build": "gatsby build",
