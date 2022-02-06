@@ -10,7 +10,7 @@ module.exports = {
     description: "Data Science Portfolio Site of cfccfelipe",
     author: "@cfccfelipe",
     twitterUsername: "@cfccfelipe",
-    siteUrl: "https://cfccfelipe.herokuapp.com",
+    siteUrl: "https://cfccfelipe.netlify.app",
   },
   plugins: [
     `gatsby-transformer-sharp`,
