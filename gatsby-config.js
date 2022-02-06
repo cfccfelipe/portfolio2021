@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://portfolio-cfccfelipe-pai.herokuapp.com/`,
+        apiURL: `https://portfolio-cfccfelipe-pai.herokuapp.com`,
         queryLimit: `1000`, // Default to 100
         contentTypes: [`jobs`, `projects`, `blogs`],
         singleTypes: [],
