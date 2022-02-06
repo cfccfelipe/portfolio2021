@@ -11,7 +11,7 @@ module.exports = {
     author: "@cfccfelipe",
     twitterUsername: "@cfccfelipe",
     image: "/twitter-img.png",
-    siteUrl: "https://testing-strapi-gatsby-build.netlify.app",
+    siteUrl: "https://cfccfelipe.netlify.app/",
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -28,7 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `http://localhost:1337`,
+        apiURL: `https://portfolio-cfccfelipe-pai.herokuapp.com/`,
         queryLimit: `1000`, // Default to 100
         contentTypes: [`jobs`, `projects`, `blogs`],
         singleTypes: [],
