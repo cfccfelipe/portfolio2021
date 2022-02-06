@@ -11,7 +11,7 @@ module.exports = {
     author: "@cfccfelipe",
     twitterUsername: "@cfccfelipe",
     image: "/twitter-img.png",
-    siteUrl: "https://cfccfelipe.netlify.app/",
+    siteUrl: "https://cfccfelipe.herokuapp.com/",
   },
   plugins: [
     `gatsby-transformer-sharp`,
