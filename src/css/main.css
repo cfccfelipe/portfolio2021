@@ -849,7 +849,13 @@ Footer
   font-weight: normal;
   text-transform: uppercase;
 }
-.footer h4 span {
+.footer h5 {
+  margin-top: 0.5rem;
+  color: var(--clr-white);
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.footer h span {
   color: var(--clr-primary-5);
 }
 .footer-links {

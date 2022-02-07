@@ -10,7 +10,6 @@ const ProjectsPage = ({ data }) => {
   } = data
   return (
     <Layout>
-      <Navbar />
       <Projects projects={projects} title=" Projects" />
     </Layout>
   )

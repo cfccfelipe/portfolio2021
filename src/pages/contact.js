@@ -6,7 +6,7 @@ const contact = () => {
     <Layout>
       <section className="contact-page">
         <article className="contact-form">
-          <h3>Leave me a message</h3>
+          <h3>Contact me</h3>
           <form action="https://formspree.io/f/xnqwpoya" method="POST">
             <div className="form-group">
               <input

@@ -31,10 +31,9 @@ Blog.propTypes = {
   title: PropTypes.string,
   short_desc: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.object),
-  id: PropTypes.String,
+  id: PropTypes.string,
   imgp: PropTypes.object,
   slug: PropTypes.string,
-  short_desc: PropTypes.string,
   date: PropTypes.string,
 }
 

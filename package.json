@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "cfccfelipe-page",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Personal web using gatsby",
   "version": "0.1.0",
   "license": "MIT",
   "engines": {

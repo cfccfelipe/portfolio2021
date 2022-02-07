@@ -10,7 +10,6 @@ const Blog = ({ data }) => {
   } = data
   return (
     <Layout>
-      <Navbar />
       <section className="Blog-page">
         <Blogs blogs={blogs} title="blog" />
       </section>
